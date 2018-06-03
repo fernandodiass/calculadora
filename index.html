@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="Fernando Dias">	
+
+	<title>Calculadora</title>
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+</head>
+<body class="container text-center col-md-3">
+
+
+
+	<form class="form-group" name="calcform" method="post" action="">
+
+		<fieldset class="form-group">
+			<h1 class="text-center">Calculadora</h1>
+			<br>
+			<label for="valor1">Digite o valor <strong>1</strong>:</label>
+			<input class="form-control" type="text" name="valor1" id="valor1"   />	
+			<br>
+			<label for="valor2">Digite o valor <strong>2</strong>:</label>
+			<input class="form-control" type="text" name="valor2" id="valor2"  />	
+			<br>
+			<label for="oper">Selecione a operação:</label>
+			<select class="form-control" name="oper" id="oper">				
+				<option value="somar">Somar</option>
+				<option value="subtrair">Subtrair</option>
+				<option value="multiplicar">Multiplifcar</option>
+				<option value="dividir">Dividir</option>
+			</select>
+			<br>	
+			<label for="res">Resultado:</label>
+			<input class="form-control" type="text" name="resultado" id="resultado" />
+			<br>
+			<input class="btn btn-primary form-control" type="button" value="Calcular" onClick="calcular(document.calcform.oper.value)"/> 
+		</fieldset>
+
+	</form>
+	
+	<!-- código javascript da calculadora -->
+	<script>
+
+		function calcular(oper){
+
+			// cria-se as variáveis e insere os valores nos inputs do formulário.
+			var valor1 = parseFloat(document.calcform.valor1.value); 
+			var valor2 = parseFloat(document.calcform.valor2.value);		
+
+			// agora vamos criar os 04 tipos de operações através de condicionais.
+			if(oper == "somar"){ 
+				var resultado = valor1+valor2;							
+			}else{
+				if(oper == "subtrair"){
+					var resultado = valor1-valor2;
+				}else{
+					if(oper == "multiplicar"){
+						var resultado = valor1*valor2;
+					}else{
+						var resultado = valor1/valor2;
+					}
+				}
+			}
+            // o valor do resultado é impresso no input resultado do formulário.
+			document.calcform.resultado.value = resultado.toFixed(6); // resultado com até 4 casas decimais
+		}
+		
+		
+		
+	</script>
+
+</body>
+
+</html>
